@@ -185,9 +185,22 @@ ie: 91 rounds to 90; 173 rounds to 200; 1450 rounds to 1000
 Hint: use `MARGIN = 1:2` to apply the function to each value instead of only a row/col.
 
 ```{r}
+# print mat_rand for comparison
+mat_rand
 
+# create function
+rounding <- function(int){
+  # find number of digits in number
+  int_digits <- nchar(as.character(int))
+  # round based on number of digits
+  int <- round(int, 1 - int_digits)
+}
+
+# applying function
+mat_rand_rounded <- apply(mat_rand, 1:2, rounding)
+# print new matrix for comparison
+mat_rand_rounded
 ```
-
 
 ## Question 4 (9 points)
 
